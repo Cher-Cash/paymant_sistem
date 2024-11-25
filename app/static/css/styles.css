@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+}
+
+h1 {
+    color: #ffffff;
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+nav {
+    background-color: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a.active {
+    font-weight: bold;
+    color: #ffcc00; /* Цвет активной ссылки */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.product {
+    background-color: #2e2e2e;
+    color: #fff;
+    padding: 15px;
+    margin: 10px;
+    border-radius: 5px;
+    width: calc(30% - 20px); /* Три продукта в ряд */
+}
+
+.product h3 {
+    margin: 0 0 10px;
+}
+
+.product p {
+    margin: 5px 0;
+}
+
+.product img {
+    width: 100%; /* Ширина изображения 100% от родительского блока */
+    height: auto; /* Автоматическая высота */
+    border-radius: 5px; /* Закругление углов */
+    margin-bottom: 10px; /* Отступ снизу */
+}
+
+footer {
+    background-color: #2e2e2e;
+    color: #777;
+    padding: 10px;
+    text-align: center;
+    margin-top: auto;
+}

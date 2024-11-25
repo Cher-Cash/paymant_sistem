@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Платежная форма{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Платежная форма</h1>
+    </header>
+
+    {% include 'navigation.html' %}
+
+    <!-- Основной контент -->
+    <div class="container">
+            <!-- Flash message block -->
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <ul>
+                {% for category, message in messages %}
+                    <li class="flash {{ category }}">{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+    </div>
+        {% block content %}
+        <!-- Контент будет вставлен сюда -->
+        {% endblock %}
+    </div>
+
+    <footer>
+        &copy; 2024 Интернет-магазин
+    </footer>
+    {% block scripts %}
+    {% endblock %}
+</body>
+</html>
