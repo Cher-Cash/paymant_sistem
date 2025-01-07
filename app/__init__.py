@@ -31,7 +31,7 @@ def create_app(testing=False):
     @new_app.route("/process", methods=["POST", "GET"])
     def payment_page():
         '''
-        http://127.0.0.1:5000/process?company_id=1&order_id=1&callback_url=https://ya.ru&price=1000
+        http://127.0.0.1:6018/process?company_id=1&order_id=1&callback_url=https://ya.ru&price=1000
         :return:
         '''
         company_id = request.args.get("company_id")
