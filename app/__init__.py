@@ -30,37 +30,25 @@ def create_app(testing=False):
 
     @new_app.route("/process", methods=["POST", "GET"])
     def payment_page():
-        '''
-        http://127.0.0.1:6018/process?company_id=1&order_id=1&callback_url=https://ya.ru&price=1000
-        :return:
-        '''
         company_id = request.args.get("company_id")
         order_id = request.args.get("order_id")
         callback_url = request.args.get("callback_url")
         price = request.args.get("price")
-        print(order_id)
-        print(request.args, type(request.args))
         if not (company_id and order_id and callback_url and price):
             return abort(404)
 
-        company = Company.query.get_or_404(1)
+        company = Company.query.get_or_404(company_id)
         if request.method == "POST":
-            print(request.form, type(request.form))
             new_order = Orders(price=price, status="pending", company_id=company_id)
             db.session.add(new_order)
             db.session.commit()
             query_params = {'status': new_order.status, 'company_id': company_id, 'order_id': order_id}
-            query_params['signature'] = generate_signature(query_params)
+            query_params['signature'] = generate_signature(query_params, company.secret_key)
             return redirect(callback_url + '?' + urlencode(query_params))
         return render_template("payment_page.html",
                                company=company, order_id=order_id,
                                callback_url=callback_url, price=price)
-
-
-
     return new_app
-
-
 
 
 class MyModelView(ModelView):
